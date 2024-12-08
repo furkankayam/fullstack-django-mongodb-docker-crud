@@ -31,8 +31,6 @@ This project is a full-featured CRUD (Create, Read, Update, Delete) application 
 
 </div>
 
-<br>
-
 </div>
 <hr>
 
