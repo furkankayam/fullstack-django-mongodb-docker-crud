@@ -50,7 +50,7 @@ This project is a full-featured CRUD (Create, Read, Update, Delete) application 
 
 <br>
 
-#### Used Technologies in The Project:
+### Used Technologies in The Project:
 
 [![React](https://img.shields.io/badge/React-18.3-000?style=for-the-badge&logo=react&logoColor=white&color=61DAFB)](https://react.dev/)
 [![Python](https://img.shields.io/badge/Python-3.7.9-000?style=for-the-badge&logo=python&logoColor=white&color=3776AB)](https://www.python.org/)
