@@ -1,0 +1,70 @@
+# Services
+services:
+  # Frontend
+  core-frontend:
+    build: ./core-frontend/.
+    container_name: core-frontend
+    restart: always
+    ports:
+      - "80:5173"
+    depends_on:
+      - core-backend
+    networks:
+      - my-network
+
+  # Backend
+  core-backend:
+    build: ./core-backend/.
+    container_name: core-backend
+    restart: always
+    env_file: ./.env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./core-backend:/app
+    depends_on:
+      - mongodb
+    environment:
+      - DJANGO_SETTINGS_MODULE=core.settings
+      - MONGO_HOST=${MONGODB_HOST}
+      - MONGO_PORT=${MONGODB_PORT}
+    networks:
+      - my-network
+
+  # MongoDb
+  mongodb:
+    image: mongo:4.4.17-focal
+    container_name: mongodb
+    restart: always
+    env_file: ./.env
+    ports:
+      - "${MONGODB_PORT}:${MONGODB_PORT}"
+    volumes:
+      - db:/data/db
+      - ./db/init.js:/docker-entrypoint-initdb.d/init.js:ro
+    networks:
+      - my-network
+
+  # Mongo Express
+  mongo-express:
+    image: mongo-express:0.54.0
+    container_name: mongo-express
+    restart: always
+    env_file: ./.env
+    ports:
+      - "5000:8081"
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGODB_USER}
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGODB_PASSWORD}
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+    networks:
+      - my-network
+
+# Volumes
+volumes:
+  db:
+
+# Networks
+networks:
+  my-network:
+    driver: bridge
