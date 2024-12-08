@@ -21,12 +21,12 @@ This project is a full-featured CRUD (Create, Read, Update, Delete) application 
 
 <details>
 <summary>✏️ Update User </summary>
-<img src="./images/prices.png" alt="create">
+<img src="./images/update.png" alt="update">
 </details>
 
 <details>
 <summary>🗑️ Delete User </summary>
-<img src="./images/contact.png" alt="create">
+<img src="./images/delete.png" alt="delete">
 </details>
 
 </div>
